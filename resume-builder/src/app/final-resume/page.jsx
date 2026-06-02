@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "next/navigation";
 
-import { useSearchParams } from "next/navigation";
 
 
 import ClassicTemplate from "../components/temp/temp-1";
@@ -27,10 +26,9 @@ export default function FinalResumePage() {
     const router = useRouter();
     // const params = useParams();
 
-    const searchParams = useSearchParams();
+    const params = useParams();
 
-    const resumeId =
-        searchParams.get("id");
+    const resumeId = params.id;
 
 
     const [resumeData, setResumeData] = useState(null);
