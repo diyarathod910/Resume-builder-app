@@ -4,20 +4,15 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
-// const cookieValidator = require('./middleware/auth.js')
-
-
-// const mw =  require('./app/middleware/auth.js')
 
 
 
 
 mongoose.Promise = global.Promise;
-mongoose
-    .connect("mongodb://127.0.0.1:27017/resumeDB", {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
     .then(() => {
         console.log("Successfully connected to the database");
     })
@@ -61,7 +56,7 @@ app.get("/", (req, res) => {
     res.json({ message: "Server is running :D" });
 });
 
-let PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
     require("./routes/app.routes.js")(app);
