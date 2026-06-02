@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+
 
 import { useParams } from "next/navigation";
 
@@ -30,12 +30,11 @@ import ModernFancyTemplate from "../components/temp/ModernFancyTemplate";
 
 export default function BuilderPage() {
 
-    const searchParams = useSearchParams();
+
 
     const params = useParams();
 
-    const template =
-        searchParams.get("template");
+
 
     const [currentStep, setCurrentStep] = useState(1);
 
@@ -151,9 +150,7 @@ export default function BuilderPage() {
 
         selectedSections: [],
 
-        selectedTemplate:
-            template || "classic",
-
+        selectedTemplate: "classic",
     };
 
 
