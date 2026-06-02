@@ -1,0 +1,16 @@
+# Dependencies
+node_modules
+backend/node_modules
+resume-builder/node_modules
+
+# Next.js
+.next
+resume-builder/.next
+
+# Environment variables
+.env
+backend/.env
+resume-builder/.env
+
+# Logs
+*.log
