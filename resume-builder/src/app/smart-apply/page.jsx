@@ -15,17 +15,17 @@ import { useRouter } from "next/navigation";
 
 import { CheckCircle2, Sparkles, ShieldCheck } from "lucide-react";
 import Nav from "../components/header/nav";
-import { useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 
 
 
 
 export default function SmartApplyPage() {
     const router = useRouter();
-    const searchParams = useSearchParams();
+    const params = useParams();
 
-    const resumeId =
-        searchParams.get("id");
+    const resumeId = params.id;
+    
     const [resumeData, setResumeData] = useState(null);
     useEffect(() => {
 
