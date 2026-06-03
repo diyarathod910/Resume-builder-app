@@ -35,6 +35,11 @@ export default function BuilderPage() {
     const params = useParams();
 
 
+    const template =
+        params.get("template");
+
+
+
 
     const [currentStep, setCurrentStep] = useState(1);
 
@@ -150,7 +155,8 @@ export default function BuilderPage() {
 
         selectedSections: [],
 
-        selectedTemplate: "classic",
+        selectedTemplate:
+            template || "classic",
     };
 
 
