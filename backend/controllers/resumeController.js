@@ -1,7 +1,9 @@
 
 const Resume = require("../models/Resume.js");
 
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-core");
+const chromium = require("@sparticuz/chromium");
+
 
 
 // CREATE RESUME
@@ -197,8 +199,14 @@ exports.downloadResumePdf = async (req, res) => {
         const resumeData = req.body;
 
         const browser = await puppeteer.launch({
+
+            args: chromium.args,
+
+            executablePath:
+                await chromium.executablePath(),
+
             headless: true,
-            args: ["--no-sandbox", "--disable-setuid-sandbox"],
+
         });
 
         const page = await browser.newPage();

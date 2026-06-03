@@ -12,6 +12,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@sparticuz/chromium": "^149.0.0",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
@@ -26,6 +27,6 @@
     "mongoose": "^6.13.8",
     "multer": "^2.1.1",
     "nodemon": "^2.0.19",
-    "puppeteer": "^25.1.0"
+    "puppeteer-core": "^25.1.0"
   }
 }
