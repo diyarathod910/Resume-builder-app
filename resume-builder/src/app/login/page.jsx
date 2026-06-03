@@ -7,6 +7,7 @@ import { auth } from "../firebase/firebase";
 
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import axios from "axios";
+import { BASE_URL } from "../config/api";
 
 export default function LoginModal() {
 
@@ -37,7 +38,7 @@ export default function LoginModal() {
 
             const response =
                 await axios.post(
-                    "http://localhost:8080/google-signup",
+                    `${BASE_URL}/google-signup`,
                     {
                         name: googleUser.displayName,
 

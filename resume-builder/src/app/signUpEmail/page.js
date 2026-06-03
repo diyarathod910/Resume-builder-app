@@ -12,6 +12,7 @@ import { auth } from "../firebase/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 import { useRouter } from "next/navigation";
+import { BASE_URL } from "../config/api";
 
 
 export default function SignupEmailModal() {
@@ -35,7 +36,7 @@ export default function SignupEmailModal() {
 
             const response =
                 await axios.post(
-                    "http://localhost:8080/email-signup",
+                    `${BASE_URL}/email-signup`,
                     {
                         email,
                         password
@@ -95,7 +96,7 @@ export default function SignupEmailModal() {
             // SEND USER TO BACKEND
             const response = await fetch(
 
-                "http://localhost:8080/google-signup",
+                `${BASE_URL}/google-signup`,
 
                 {
 

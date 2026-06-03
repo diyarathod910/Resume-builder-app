@@ -28,6 +28,8 @@ import ATSFriendlyTemplate from "../components/temp/ATSFriendlyTemplate";
 import CreativeTemplate from "../components/temp/CreativeTemplate";
 import ModernFancyTemplate from "../components/temp/ModernFancyTemplate";
 
+import { BASE_URL } from "../config/api";
+
 export default function BuilderPage() {
 
 
@@ -48,7 +50,7 @@ export default function BuilderPage() {
 
                 const response =
                     await axios.get(
-                        `http://localhost:8080/single-resume/${params.id}`
+                        `${BASE_URL}/single-resume/${params.id}`
                     );
 
                 if (response.data.success) {

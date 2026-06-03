@@ -21,6 +21,7 @@ import { useRouter } from "next/navigation";
 import { CheckCircle2, Sparkles, ShieldCheck } from "lucide-react";
 
 import Nav from "../components/header/nav";
+import { BASE_URL } from "../config/api";
 
 export default function FinalResumePage() {
     const router = useRouter();
@@ -69,7 +70,7 @@ export default function FinalResumePage() {
 
             await axios.put(
 
-                `http://localhost:8080/update-resume/${resumeId}`,
+                `${BASE_URL}/update-resume/${resumeId}`,
 
                 {
                     title: resumeData.name,
@@ -88,7 +89,7 @@ export default function FinalResumePage() {
 
             await axios.post(
 
-                "http://localhost:8080/create-resume",
+                `${BASE_URL}/create-resume`,
 
                 {
                     userId: user._id,

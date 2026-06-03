@@ -1,80 +1,6 @@
-// // import puppeteer from "puppeteer";
 
-// // export async function GET() {
-
-// //     const browser = await puppeteer.launch({
-// //         headless: true,
-// //     });
-
-// //     const page = await browser.newPage();
-
-// //     await page.goto(
-// //         "http://localhost:3000/resume-print",
-// //         {
-// //             waitUntil: "networkidle0",
-// //         }
-// //     );
-
-// //     const pdf = await page.pdf({
-// //         format: "A4",
-// //         printBackground: true,
-// //     });
-
-// //     await browser.close();
-
-// //     return new Response(pdf, {
-// //         headers: {
-// //             "Content-Type": "application/pdf",
-// //             "Content-Disposition":
-// //                 'attachment; filename="resume.pdf"',
-// //         },
-// //     });
-// // }
-// import puppeteer from "puppeteer";
-
-// export async function POST(req) {
-
-//     const resumeData = await req.json();
-
-//     const browser = await puppeteer.launch({
-//         headless: true,
-//     });
-
-//     const page = await browser.newPage();
-
-//     const encodedData = encodeURIComponent(
-//         JSON.stringify(resumeData)
-//     );
-
-//     await page.goto(
-//         `http://localhost:3000/resume-print?data=${encodedData}`,
-//         {
-//             waitUntil: "networkidle0",
-//         }
-//     );
-
-//     const pdf = await page.pdf({
-//         format: "A4",
-//         printBackground: true,
-//         margin: {
-//             top: "0",
-//             right: "0",
-//             bottom: "0",
-//             left: "0",
-//         },
-//     });
-
-//     await browser.close();
-
-//     return new Response(pdf, {
-//         headers: {
-//             "Content-Type": "application/pdf",
-//             "Content-Disposition":
-//                 'attachment; filename="resume.pdf"',
-//         },
-//     });
-// }
 import puppeteer from "puppeteer";
+import { BASE_URL } from "@/app/config/api";
 
 export async function POST(req) {
 
@@ -88,7 +14,7 @@ export async function POST(req) {
 
         const page = await browser.newPage();
 
-        await page.goto("http://localhost:3000/resume-print", {
+        await page.goto(`${BASE_URL}/resume-print`, {
             waitUntil: "networkidle0",
         });
 

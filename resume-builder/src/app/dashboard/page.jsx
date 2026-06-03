@@ -12,6 +12,7 @@ import axios from "axios";
 import { templates } from "../Data/templates";
 
 import DashboardSidebarUI from "../components/UI/DashboardSidebarUI";
+import { BASE_URL } from "../config/api";
 
 export default function DashboardPage() {
     const router = useRouter();
@@ -37,7 +38,7 @@ export default function DashboardPage() {
 
                 const response =
                     await fetch(
-                        `http://localhost:8080/user-resumes/${user._id}`
+                        `${BASE_URL}/user-resumes/${user._id}`
                     );
 
                 const data = await response.json();
@@ -65,7 +66,7 @@ export default function DashboardPage() {
         try {
 
             await axios.delete(
-                `http://localhost:8080/delete-resume/${id}`
+                `${BASE_URL}/delete-resume/${id}`
             );
 
             // REMOVE FROM UI

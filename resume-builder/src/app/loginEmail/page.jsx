@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
+import { BASE_URL } from "../config/api";
 
 export default function LoginEmail() {
 
@@ -21,7 +22,7 @@ export default function LoginEmail() {
 
             const response =
                 await axios.post(
-                    "http://localhost:8080/email-login",
+                    `${BASE_URL}/email-login`,
                     {
                         email,
                         password

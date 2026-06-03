@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { auth } from "../firebase/firebase";
 
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { BASE_URL } from "../config/api";
 
 export default function SignupModal() {
     const router = useRouter();
@@ -30,7 +31,7 @@ export default function SignupModal() {
             // SEND USER TO BACKEND
             const response = await fetch(
 
-                "http://localhost:8080/google-signup",
+                `${BASE_URL}/google-signup`,
 
                 {
 

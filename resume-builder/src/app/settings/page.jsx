@@ -17,6 +17,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 import DashboardSidebarUI from "../components/UI/DashboardSidebarUI";
+import { BASE_URL } from "../config/api";
 
 export default function SettingsPage() {
 
@@ -58,7 +59,7 @@ export default function SettingsPage() {
 
             const response =
                 await axios.put(
-                    `http://localhost:8080/change-email/${user._id}`,
+                    `${BASE_URL}/change-email/${user._id}`,
                     {
                         email,
                         password
@@ -91,7 +92,7 @@ export default function SettingsPage() {
         try {
 
             await axios.delete(
-                `http://localhost:8080/delete-account/${user._id}`
+                `${BASE_URL}/delete-account/${user._id}`
             );
 
             localStorage.removeItem("user");
