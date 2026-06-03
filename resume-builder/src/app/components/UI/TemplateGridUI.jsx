@@ -1,8 +1,10 @@
 
 import { templates } from "@/app/Data/templates";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function TemplateGridUI() {
+    const router = useRouter();
     return (
         <>
             <section id="templates" className="w-full py-30 px-[5%] bg-linear-to-b from-[#191970] via-[#24146b] to-[#312E81]">
@@ -47,16 +49,22 @@ export default function TemplateGridUI() {
                                     />
 
                                     {/* OVERLAY */}
-                                    <div className="absolute inset-0 bg-linear-to-t from-[#191970dd] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end justify-center pb-7]">
+                                    <button
+                                        onClick={(e) => {
 
-                                        <button className="bg-linear-to-r  from-[#38BDF8] via-[#3B82F6] to-[#6366F1] text-white px-8.5 py-4 rounded-full text-[18px] font-semibold shadow-[0_10px_40px_rgba(59,130,246,0.45)] hover:scale-[1.05] transition-all duration-300 mb-5">
+                                            e.preventDefault();
 
-                                            Use Template
+                                            localStorage.setItem(
+                                                "selectedTemplate",
+                                                template.id
+                                            );
+                                            router.push("/builder");
 
-                                        </button>
-
-                                    </div>
-
+                                        }}
+                                        className="bg-linear-to-r from-[#38BDF8] via-[#3B82F6] to-[#6366F1] text-white px-8.5 py-4 rounded-full text-[18px] font-semibold shadow-[0_10px_40px_rgba(59,130,246,0.45)] hover:scale-[1.05] transition-all duration-300 mb-5"
+                                    >
+                                        Use Template
+                                    </button>
                                     {/* BADGE */}
                                     <div className="absolute top-4.5 left-4.5 bg-white/90 backdrop-blur-md px-4.5 py-2 rounded-full text-[14px] font-semibold text-[#191970] shadow-lg">
 

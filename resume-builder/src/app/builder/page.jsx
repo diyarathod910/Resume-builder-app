@@ -33,14 +33,6 @@ export default function BuilderPage() {
 
 
     const params = useParams();
-
-
-    const template =
-        params.get("template");
-
-
-
-
     const [currentStep, setCurrentStep] = useState(1);
 
 
@@ -78,6 +70,28 @@ export default function BuilderPage() {
         fetchResume();
 
     }, [params]);
+    useEffect(() => {
+
+        if (!params?.id) {
+
+            const savedTemplate =
+                localStorage.getItem("selectedTemplate");
+
+            if (savedTemplate) {
+
+                setResumeData(prev => ({
+
+                    ...prev,
+
+                    selectedTemplate: savedTemplate
+
+                }));
+
+            }
+
+        }
+
+    }, [params?.id]);
     const defaultResumeData = {
 
         name: "Jane Anderson",
@@ -155,8 +169,7 @@ export default function BuilderPage() {
 
         selectedSections: [],
 
-        selectedTemplate:
-            template || "classic",
+        selectedTemplate: "classic",
     };
 
 
