@@ -1,6 +1,8 @@
 
 const Resume = require("../models/Resume.js");
 
+const puppeteer = require("puppeteer");
+
 
 // CREATE RESUME
 exports.createResume = async (req, res) => {
@@ -187,4 +189,76 @@ exports.deleteResume = async (req, res) => {
 
     }
 
+};
+
+exports.downloadResumePdf = async (req, res) => {
+    try {
+
+        const resumeData = req.body;
+
+        const browser = await puppeteer.launch({
+            headless: true,
+            args: ["--no-sandbox", "--disable-setuid-sandbox"],
+        });
+
+        const page = await browser.newPage();
+
+        // Your frontend URL
+        await page.goto(
+            "https://resume-builder-app-puce.vercel.app/resume-print",
+
+
+            {
+                waitUntil: "networkidle0",
+            }
+        );
+
+        await page.evaluate((data) => {
+
+            localStorage.setItem(
+                "resumeData",
+                JSON.stringify(data)
+            );
+
+        }, resumeData);
+
+        await page.reload({
+            waitUntil: "networkidle0",
+        });
+
+        await new Promise(resolve =>
+            setTimeout(resolve, 2000)
+        );
+
+        const pdf = await page.pdf({
+            format: "A4",
+            printBackground: true,
+            margin: {
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0",
+            },
+        });
+
+        await browser.close();
+
+        res.set({
+            "Content-Type": "application/pdf",
+            "Content-Disposition":
+                "attachment; filename=resume.pdf",
+        });
+
+        return res.send(pdf);
+
+    } catch (error) {
+
+        console.error(error);
+
+        return res.status(500).json({
+            success: false,
+            message: error.message,
+        });
+
+    }
 };

@@ -61,4 +61,8 @@ module.exports = (router) => {
     // DELETE RESUME
     router.delete("/delete-resume/:id", Resume.deleteResume);
 
+    // download resume
+
+    router.post("/download-pdf",Resume.downloadResumePdf);
+
 }

@@ -107,31 +107,33 @@ export default function FinalResumePage() {
 
         }
 
-        const response = await fetch("/api/download", {
+        const response = await axios.post(
+            `${BASE_URL}/download-pdf`,
+            resumeData,
+            {
+                responseType: "blob",
+            }
+        );
 
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json",
-            },
-
-            body: JSON.stringify(resumeData),
-
-        });
-
-        const blob = await response.blob();
+        const blob = new Blob(
+            [response.data],
+            { type: "application/pdf" }
+        );
 
         const url =
             window.URL.createObjectURL(blob);
 
-        const a =
+        const link =
             document.createElement("a");
 
-        a.href = url;
+        link.href = url;
+        link.download = "resume.pdf";
 
-        a.download = "resume.pdf";
+        document.body.appendChild(link);
 
-        a.click();
+        link.click();
+
+        link.remove();
     };
 
     return (
