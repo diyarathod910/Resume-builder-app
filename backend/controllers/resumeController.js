@@ -200,14 +200,23 @@ exports.downloadResumePdf = async (req, res) => {
 
         const browser = await puppeteer.launch({
 
-            args: chromium.args,
+            args: [
+                ...chromium.args,
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+            ],
 
             executablePath:
                 await chromium.executablePath(),
 
-            headless: true,
+            headless: "new",
 
         });
+        console.log("Chromium loaded:", chromium);
+        console.log(
+            "ExecutablePath type:",
+            typeof chromium.executablePath
+        );
 
         const page = await browser.newPage();
 
