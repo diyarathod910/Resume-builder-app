@@ -12,6 +12,26 @@ export default function PersonalInfoStep({
         });
     };
 
+    const uploadImage = async (file) => {
+
+        const formData = new FormData();
+
+        formData.append("file", file);
+        formData.append("upload_preset", "resume_builder");
+
+        const response = await fetch(
+            `https://api.cloudinary.com/v1_1/dxynhn4h7/image/upload`,
+            {
+                method: "POST",
+                body: formData,
+            }
+        );
+
+        const data = await response.json();
+
+        return data.secure_url;
+    };
+
     return (
         <div className="w-full max-w-4xl mx-auto">
 
@@ -112,7 +132,7 @@ export default function PersonalInfoStep({
                 <input
                     type="file"
                     accept="image/*"
-                    onChange={(e) => {
+                    onChange={async(e) => {
 
                         const file = e.target.files[0];
 
@@ -120,14 +140,12 @@ export default function PersonalInfoStep({
 
                             const reader = new FileReader();
 
-                            reader.onloadend = () => {
+                            const imageUrl = await uploadImage(file);
 
-                                setResumeData({
-                                    ...resumeData,
-                                    image: reader.result,
-                                });
-
-                            };
+                            setResumeData({
+                                ...resumeData,
+                                image: imageUrl,
+                            });
 
                             reader.readAsDataURL(file);
 
