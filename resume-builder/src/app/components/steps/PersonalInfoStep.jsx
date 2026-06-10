@@ -13,17 +13,19 @@ export default function PersonalInfoStep({
     };
 
     return (
-        <div className="max-w-4xl">
+        <div className="w-full max-w-4xl mx-auto">
 
-            <h1 className="text-5xl font-bold text-[#07203f] mb-5">
-                What’s the best way for employers to contact you?
+            {/* HEADING */}
+            <h1 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#07203f] mb-4">
+                What's the best way for employers to contact you?
             </h1>
 
-            <p className="text-gray-600 mb-12 text-lg">
+            <p className="text-gray-600 mb-8 text-base md:text-lg">
                 We suggest including an email and phone number.
             </p>
 
-            <div className="grid grid-cols-2 gap-6">
+            {/* FORM */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
 
                 <div>
                     <label className="block mb-2 font-semibold">
@@ -35,9 +37,10 @@ export default function PersonalInfoStep({
                         name="name"
                         value={resumeData.name}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-xl px-5 py-4 outline-none focus:border-blue-600"
+                        className="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:border-blue-600"
                     />
                 </div>
+
                 <div>
                     <label className="block mb-2 font-semibold">
                         Profession
@@ -48,7 +51,7 @@ export default function PersonalInfoStep({
                         name="profession"
                         value={resumeData.profession}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-xl px-5 py-4 outline-none focus:border-blue-600"
+                        className="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:border-blue-600"
                     />
                 </div>
 
@@ -62,7 +65,7 @@ export default function PersonalInfoStep({
                         name="email"
                         value={resumeData.email}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-xl px-5 py-4 outline-none focus:border-blue-600"
+                        className="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:border-blue-600"
                     />
                 </div>
 
@@ -70,18 +73,21 @@ export default function PersonalInfoStep({
                     <label className="block mb-2 font-semibold">
                         Phone
                     </label>
+
                     <input
                         type="text"
                         name="phone"
                         value={resumeData.phone}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-xl px-5 py-4 outline-none focus:border-blue-600"
+                        className="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:border-blue-600"
                     />
                 </div>
 
             </div>
 
-            <div className="mt-6">
+            {/* LOCATION */}
+            <div className="mt-5">
+
                 <label className="block mb-2 font-semibold">
                     Location
                 </label>
@@ -91,13 +97,15 @@ export default function PersonalInfoStep({
                     name="location"
                     value={resumeData.location}
                     onChange={handleChange}
-
-                    className="w-full border border-gray-300 rounded-xl px-5 py-4 outline-none focus:border-blue-600"
+                    className="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:border-blue-600"
                 />
-            </div>
-            <div className="mt-6">
 
-                <label className="block text-[16px] font-semibold mb-2">
+            </div>
+
+            {/* PROFILE PHOTO */}
+            <div className="mt-5">
+
+                <label className="block mb-2 font-semibold">
                     Profile Photo
                 </label>
 
@@ -131,27 +139,17 @@ export default function PersonalInfoStep({
 
             </div>
 
-            {/* <div className="mt-6">
-                <label className="block mb-2 font-semibold">
-                    Professional Summary
-                </label>
+            {/* BUTTON */}
+            <div className="flex justify-end mt-8">
 
-                <textarea
-                    rows="6"
-                    name="summary"
-                    value={resumeData.summary}
-                    onChange={handleChange}
-                    className="w-full border border-gray-300 rounded-xl px-5 py-4 outline-none focus:border-blue-600 resize-none"
-                />
-            </div> */}
+                <button
+                    onClick={() => setCurrentStep(2)}
+                    className="w-full sm:w-auto bg-[#f5c04f] hover:bg-[#efb63d] transition text-black px-8 py-3 rounded-full text-lg font-semibold"
+                >
+                    Next: Work History
+                </button>
 
-            <div className="flex justify-end mt-10"></div>
-            <button
-                onClick={() => setCurrentStep(2)}
-                className="bg-[#f5c04f] hover:bg-[#efb63d] transition text-black px-10 py-4 rounded-full text-lg font-semibold"
-            >
-                Next: Work History
-            </button>
+            </div>
 
         </div>
 

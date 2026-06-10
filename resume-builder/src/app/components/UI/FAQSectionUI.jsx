@@ -41,26 +41,26 @@ export default function FAQSection() {
 
     return (
 
-        <section className="w-full py-30 bg-linear-to-br from-[#191970] via-[#312E81] to-[#4338CA] flex justify-center px-[5%]">
+        <section className="w-full py-16 md:py-24 lg:py-30 bg-linear-to-br from-[#191970] via-[#312E81] to-[#4338CA] flex justify-center px-4 sm:px-6 lg:px-[5%]">
 
-            <div className="w-full  flex flex-col items-center gap-17.5">
+            <div className="w-full flex flex-col items-center gap-10 md:gap-14 lg:gap-18">
 
                 {/* HEADING */}
-                <div className="w-full flex flex-col items-center gap-4.5 text-center">
+                <div className="w-full flex flex-col items-center gap-3 md:gap-4 text-center">
 
-                    <span className="text-[18px] font-semibold tracking-[3px] uppercase text-[#A5B4FC]">
+                    <span className="text-sm sm:text-base lg:text-[18px] font-semibold tracking-[3px] uppercase text-[#A5B4FC]">
 
                         FAQ
 
                     </span>
 
-                    <h2 className="text-[58px] font-extrabold text-white leading-17.5">
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[58px] font-extrabold text-white leading-tight lg:leading-17.5">
 
                         Frequently Asked Questions
 
                     </h2>
 
-                    <p className="text-[20px] text-[#CBD5E1] leading-8.5">
+                    <p className="text-base sm:text-lg md:text-xl lg:text-[20px] text-[#CBD5E1] leading-7 lg:leading-8.5 max-w-3xl">
 
                         Everything you need to know about creating professional resumes using our builder.
 
@@ -69,36 +69,40 @@ export default function FAQSection() {
                 </div>
 
                 {/* FAQ CONTAINER */}
-                <div className="w-full flex flex-col gap-5.5">
+                <div className="w-full flex flex-col gap-4 md:gap-5">
 
                     {faqs.map((faq, index) => (
 
                         <div
                             key={index}
-                            className="w-full bg-white/10 backdrop-blur-lg border border-white/10 rounded-[28px] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.18)] transition-all duration-300"
+                            className="w-full bg-white/10 backdrop-blur-lg border border-white/10 rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.18)] transition-all duration-300"
                         >
 
                             {/* QUESTION */}
                             <button
-                                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                                className="w-full flex items-center justify-between px-9.5 py-8 text-left"
+                                onClick={() =>
+                                    setOpenIndex(
+                                        openIndex === index ? null : index
+                                    )
+                                }
+                                className="w-full flex items-center justify-between gap-4 px-5 md:px-8 lg:px-10 py-5 md:py-6 lg:py-8 text-left"
                             >
 
-                                <h3 className="text-[24px] font-semibold text-white">
+                                <h3 className="text-lg sm:text-xl md:text-[22px] lg:text-[24px] font-semibold text-white">
 
                                     {faq.question}
 
                                 </h3>
 
-                                <div className="w-10.5 h-10.5 rounded-full bg-linear-to-br from-[#60A5FA] to-[#818CF8] flex items-center justify-center shrink-0">
+                                <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-linear-to-br from-[#60A5FA] to-[#818CF8] flex items-center justify-center shrink-0">
 
                                     {openIndex === index ? (
 
-                                        <Minus className="text-white w-5.5 h-5.5" />
+                                        <Minus className="text-white w-4 h-4 md:w-5 md:h-5" />
 
                                     ) : (
 
-                                        <Plus className="text-white w-5.5 h-5.5" />
+                                        <Plus className="text-white w-4 h-4 md:w-5 md:h-5" />
 
                                     )}
 
@@ -108,13 +112,13 @@ export default function FAQSection() {
 
                             {/* ANSWER */}
                             <div
-                                className={`transition-all duration-500 overflow-hidden ${openIndex === index
-                                    ? "max-h-75 opacity-100 pb-8"
-                                    : "max-h-0 opacity-0"
+                                className={`overflow-hidden transition-all duration-500 ${openIndex === index
+                                        ? "max-h-125 opacity-100 pb-5 md:pb-8"
+                                        : "max-h-0 opacity-0"
                                     }`}
                             >
 
-                                <p className="px-9.5 text-[18px] leading-8.5 text-[#E2E8F0] max-w-[90%]">
+                                <p className="px-5 md:px-8 lg:px-10 text-sm sm:text-base lg:text-[18px] leading-7 lg:leading-8.5 text-[#E2E8F0]">
 
                                     {faq.answer}
 

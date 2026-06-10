@@ -5,6 +5,7 @@ import { FileText, Plus, EllipsisVertical, ShieldCheck, FilePenLine } from "luci
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { Menu, X, } from "lucide-react";
 
 export default function DashboardSidebarUI() {
 
@@ -32,67 +33,176 @@ export default function DashboardSidebarUI() {
 
     const [openLogin, setOpenLogin] = useState(false);
     const [openSignup, setOpenSignup] = useState(false);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
     return (
         <>
             {/* SIDEBAR */}
 
-            <div className="w-[18%] min-h-screen bg-white/10 backdrop-blur-xl border-r border-white/10 px-7 py-8 flex flex-col justify-between">
+            <>
+                {/* MOBILE MENU BUTTON */}
+                <button
+                    onClick={() => setSidebarOpen(true)}
+                    className="lg:hidden fixed top-5 left-5 z-50 p-3 rounded-xl bg-white shadow-lg"
+                >
+                    <Menu size={24} />
+                </button>
 
-                <div>
+                {/* MOBILE SIDEBAR */}
+                {sidebarOpen && (
+                    <>
+                        {/* BACKDROP */}
+                        <div
+                            className="fixed inset-0 bg-black/50 z-40"
+                            onClick={() => setSidebarOpen(false)}
+                        />
 
-                    {/* LOGO */}
+                        {/* DRAWER */}
+                        <div className="fixed left-0 top-0 w-[280px] h-screen bg-[#191970] z-50 px-6 py-8 flex flex-col justify-between">
 
-                    <div className="flex items-center gap-3 mb-16 cursor-pointer" onClick={() => router.push("/")}>
-                        <div className="w-13 h-13 rounded-2xl bg-white flex items-center justify-center text-[#191970] font-bold text-[24px] shadow-lg">
-                            Z
+                            {/* CLOSE */}
+                            <button
+                                onClick={() => setSidebarOpen(false)}
+                                className="absolute top-5 right-5"
+                            >
+                                <X className="text-white" />
+                            </button>
+
+                            {/* TOP */}
+                            <div>
+
+                                {/* LOGO */}
+                                <div
+                                    className="flex items-center gap-3 mb-16 cursor-pointer"
+                                    onClick={() => {
+                                        router.push("/");
+                                        setSidebarOpen(false);
+                                    }}
+                                >
+                                    <div className="w-11 h-11 rounded-2xl bg-white flex items-center justify-center text-[#191970] font-bold text-xl">
+                                        Z
+                                    </div>
+
+                                    <h1 className="text-white text-2xl font-bold">
+                                        Zety
+                                    </h1>
+                                </div>
+
+                                {/* MENU */}
+                                <div className="flex flex-col gap-4">
+
+                                    <button className="w-full flex items-center gap-3 bg-white text-[#191970] rounded-2xl px-5 py-4 text-base font-semibold shadow-lg">
+                                        <FileText size={20} />
+                                        Resumes
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                            {/* AUTH */}
+                            <div className="flex flex-col gap-5">
+
+                                {user ? (
+
+                                    <>
+                                        <button
+                                            onClick={() => {
+                                                router.push("/settings");
+                                                setSidebarOpen(false);
+                                            }}
+                                            className="w-full py-4 rounded-2xl bg-white text-[#191970] font-semibold"
+                                        >
+                                            Settings
+                                        </button>
+
+                                        <button
+                                            onClick={() => {
+                                                localStorage.removeItem("user");
+                                                setUser(null);
+                                                router.push("/");
+                                                setSidebarOpen(false);
+                                            }}
+                                            className="w-full py-4 rounded-2xl bg-red-500 text-white font-semibold"
+                                        >
+                                            Logout
+                                        </button>
+                                    </>
+
+                                ) : (
+
+                                    <>
+                                        <button
+                                            onClick={() => {
+                                                router.push("/login");
+                                                setSidebarOpen(false);
+                                            }}
+                                            className="w-full py-4 rounded-2xl border border-white text-white font-semibold"
+                                        >
+                                            Login
+                                        </button>
+
+                                        <button
+                                            onClick={() => {
+                                                router.push("/signup");
+                                                setSidebarOpen(false);
+                                            }}
+                                            className="w-full py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-semibold"
+                                        >
+                                            Signup
+                                        </button>
+                                    </>
+
+                                )}
+
+                            </div>
+
+                        </div>
+                    </>
+                )}
+
+                {/* DESKTOP SIDEBAR */}
+                <div className="hidden lg:flex w-[280px] min-h-screen bg-white/10 backdrop-blur-xl border-r border-white/10 px-7 py-8 flex-col justify-between">
+
+                    <div>
+
+                        {/* LOGO */}
+                        <div
+                            className="flex items-center gap-3 mb-16 cursor-pointer"
+                            onClick={() => router.push("/")}
+                        >
+                            <div className="w-13 h-13 rounded-2xl bg-white flex items-center justify-center text-[#191970] font-bold text-[24px] shadow-lg">
+                                Z
+                            </div>
+
+                            <h1 className="text-white text-[34px] font-bold">
+                                Zety
+                            </h1>
                         </div>
 
-                        <h1 className="text-white text-[34px] font-bold">
-                            Zety
-                        </h1>
+                        {/* MENU */}
+                        <div className="flex flex-col gap-4">
+
+                            <button className="w-full flex items-center gap-3 bg-white text-[#191970] rounded-2xl px-5 py-4 text-[19px] font-semibold shadow-lg cursor-pointer">
+                                <FileText size={22} />
+                                Resumes
+                            </button>
+
+                        </div>
+
                     </div>
 
-                    {/* MENU */}
+                    {/* AUTH */}
+                    <div className="flex flex-col gap-6">
 
-                    <div className="flex flex-col gap-4">
+                        {user ? (
 
-                        <button className="w-full flex items-center gap-3 bg-white text-[#191970] rounded-2xl px-5 py-4 text-[19px] font-semibold shadow-lg cursor-pointer">
-                            <FileText size={22} />
-                            Resumes
-                        </button>
-
-                       
-                    </div>
-
-                </div>
-
-                {/* AUTH BUTTONS */}
-
-
-                <div className="flex flex-col gap-6">
-
-                    {/* LOGIN / SIGNUP */}
-
-                    {
-                        user ? (
-
-                            <div className="relative mt-10 overflow-visible">
-
-                                {/* ACCOUNT BUTTON */}
+                            <div className="relative">
 
                                 <button
-                                    onClick={() =>
-                                        setOpenAccountMenu(
-                                            !openAccountMenu
-                                        )
-                                    }
+                                    onClick={() => setOpenAccountMenu(!openAccountMenu)}
                                     className="flex items-center gap-4 cursor-pointer"
                                 >
-
-                                    {/* ICON BOX */}
-
                                     <div className="w-14 h-14 rounded-[14px] bg-[#D9D9D9] flex items-center justify-center">
-
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             fill="none"
@@ -101,154 +211,74 @@ export default function DashboardSidebarUI() {
                                             stroke="currentColor"
                                             className="w-8 h-8 text-gray-500"
                                         >
-
                                             <path
                                                 strokeLinecap="round"
                                                 strokeLinejoin="round"
                                                 d="M15.75 6.75a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
                                             />
-
                                         </svg>
-
                                     </div>
 
-                                    {/* TEXT */}
-
-                                    <div className="flex flex-col items-start">
-
-                                        <h2 className="text-[24px] font-semibold text-white">
-                                            My Account
-                                        </h2>
-
-                                    </div>
-
+                                    <h2 className="text-xl font-semibold text-white">
+                                        My Account
+                                    </h2>
                                 </button>
 
-                                {/* POPUP */}
+                                {openAccountMenu && (
 
-                                {
-                                    openAccountMenu && (
+                                    <div className="absolute left-0 bottom-16 w-56 bg-white rounded-2xl shadow-2xl overflow-hidden z-50">
 
-                                        <div className="absolute left-0 bottom-15 w-55 bg-white rounded-[22px] shadow-2xl overflow-hidden z-50">
+                                        <button
+                                            onClick={() => router.push("/settings")}
+                                            className="w-full px-6 py-4 text-left hover:bg-gray-100"
+                                        >
+                                            Settings
+                                        </button>
 
-                                            {/* SETTINGS */}
+                                        <button
+                                            onClick={() => {
+                                                localStorage.removeItem("user");
+                                                setUser(null);
+                                                setOpenAccountMenu(false);
+                                                router.push("/");
+                                            }}
+                                            className="w-full px-6 py-4 text-left text-red-500 hover:bg-red-50"
+                                        >
+                                            Logout
+                                        </button>
 
-                                            <button onClick={() => router.push("/settings")}
-                                                className="w-full h-15 flex items-center gap-4 px-6 border-b border-gray-200 hover:bg-gray-100 transition-all cursor-pointer"
-                                            >
+                                    </div>
 
-                                                {/* ICON */}
-
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    strokeWidth={1.5}
-                                                    stroke="currentColor"
-                                                    className="w-7 h-7 text-gray-600"
-                                                >
-
-                                                    <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        d="M10.5 6h3m-7.5 6h12m-9 6h6"
-                                                    />
-
-                                                </svg>
-
-                                                <span className="text-[22px] text-gray-700 font-medium">
-                                                    Settings
-                                                </span>
-
-                                            </button>
-
-                                            {/* LOGOUT */}
-
-                                            <button
-                                                onClick={() => {
-
-                                                    localStorage.removeItem("user");
-
-                                                    setUser(null);
-
-                                                    setOpenAccountMenu(false);
-
-                                                    router.push("/");
-
-                                                }}
-                                                className="w-full h-15 flex items-center gap-4 px-6 hover:bg-red-50 transition-all cursor-pointer"
-                                            >
-
-                                                {/* ICON */}
-
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    strokeWidth={1.5}
-                                                    stroke="currentColor"
-                                                    className="w-7 h-7 text-red-500"
-                                                >
-
-                                                    <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6A2.25 2.25 0 005.25 5.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3-3l-3-3m3 3l-3 3m3-3H9"
-                                                    />
-
-                                                </svg>
-
-                                                <span className="text-[22px] text-red-500 font-medium">
-                                                    Logout
-                                                </span>
-
-                                            </button>
-
-                                        </div>
-
-                                    )
-                                }
+                                )}
 
                             </div>
 
                         ) : (
 
-                            <div className="flex flex-col gap-5 mt-10">
-
-                                {/* LOGIN */}
+                            <div className="flex flex-col gap-5">
 
                                 <button
-                                    onClick={() =>
-                                        router.push("/login")
-                                    }
-                                    className="w-full py-4 rounded-2xl border border-white text-white text-[20px] font-semibold hover:bg-white hover:text-[#191970] transition-all duration-300 cursor-pointer"
+                                    onClick={() => router.push("/login")}
+                                    className="w-full py-4 rounded-2xl border border-white text-white text-[20px] font-semibold hover:bg-white hover:text-[#191970] transition-all"
                                 >
-
                                     Login
-
                                 </button>
 
-                                {/* SIGNUP */}
-
                                 <button
-                                    onClick={() =>
-                                        router.push("/signup")
-                                    }
-                                    className="w-full py-4 rounded-2xl bg-linear-to-r from-cyan-400 to-blue-500 text-white text-[20px] font-semibold shadow-[0_10px_30px_rgba(59,130,246,0.5)] hover:scale-[1.03] transition-all duration-300 cursor-pointer"
+                                    onClick={() => router.push("/signup")}
+                                    className="w-full py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 text-white text-[20px] font-semibold"
                                 >
-
                                     Signup
-
                                 </button>
 
                             </div>
 
-                        )
-                    }
+                        )}
+
+                    </div>
 
                 </div>
-
-            </div>
+            </>
 
         </>
     )

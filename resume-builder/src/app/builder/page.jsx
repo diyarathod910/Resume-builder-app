@@ -37,6 +37,8 @@ export default function BuilderPage() {
     const params = useParams();
     const [currentStep, setCurrentStep] = useState(1);
 
+    const [showPreview, setShowPreview] = useState(false);
+
 
     useEffect(() => {
 
@@ -213,59 +215,116 @@ export default function BuilderPage() {
         setCurrentStep(6);
     };
 
+    const steps = [
+        "Personal Info",
+        "Experience",
+        "Education",
+        "Skills",
+        "Summary",
+        "Finalize"
+    ];
+
 
     return (
-        <div className="flex h-screen overflow-hidden bg-linear-to-br from-[#F8FAFC] to-[#EEF2FF]">
+        <div className="flex min-h-screen bg-linear-to-br from-[#F8FAFC] to-[#EEF2FF]">
 
-            {/* SIDEBAR */}
-            <BuilderSidebar
-                currentStep={currentStep}
-                setStep={setCurrentStep}
-            />
-            {/* FORM SECTION */}
-            <div className="flex-1 overflow-y-auto px-10 py-12">
+            {/* Desktop Sidebar */}
+            <div className="hidden xl:block">
+                <BuilderSidebar
+                    currentStep={currentStep}
+                    setStep={setCurrentStep}
+                />
+            </div>
 
-                {currentStep === 1 && (
-                    <PersonalInfoStep
-                        resumeData={resumeData}
-                        setResumeData={setResumeData}
-                        setCurrentStep={setCurrentStep}
-                    />
-                )}
+            {/* Main Content */}
+            <div className="flex-1 flex flex-col lg:flex-row">
 
-                {currentStep === 2 && (
-                    <ExperienceStep
-                        resumeData={resumeData}
-                        setResumeData={setResumeData}
-                        setCurrentStep={setCurrentStep}
-                    />
-                )}
-                {currentStep === 3 && (
-                    <EducationStep
-                        resumeData={resumeData}
-                        setResumeData={setResumeData}
-                        setCurrentStep={setCurrentStep}
-                    />
-                )}
+                {/* Mobile Progress Header */}
+                <div className="xl:hidden sticky top-0 z-40 bg-white border-b px-4 py-4">
 
-                {currentStep === 4 && (
-                    <SkillsStep
-                        resumeData={resumeData}
-                        setResumeData={setResumeData}
-                        setCurrentStep={setCurrentStep}
-                    />
-                )}
+                    <div className="flex justify-between items-center mb-3">
 
-                {currentStep === 5 && (
-                    <SummaryStep
-                        resumeData={resumeData}
-                        setResumeData={setResumeData}
-                        setCurrentStep={setCurrentStep}
-                    />
-                )}
+                        <div>
+                            <p className="text-xs text-gray-500">
+                                Step {currentStep} of 6
+                            </p>
 
-                {
-                    currentStep === 6 && (
+                            <h3 className="text-base font-semibold text-[#191970]">
+                                {typeof currentStep === "number"
+                                    ? steps[currentStep - 1]
+                                    : currentStep}
+                            </h3>
+                        </div>
+
+                        <div className="bg-[#191970] text-white px-3 py-1 rounded-full text-sm">
+                            {typeof currentStep === "number"
+                                ? Math.round((currentStep / 6) * 100)
+                                : 100}
+                            %
+                        </div>
+
+                    </div>
+
+                    <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+
+                        <div
+                            className="h-full bg-linear-to-r from-cyan-400 to-blue-500 transition-all duration-500"
+                            style={{
+                                width:
+                                    typeof currentStep === "number"
+                                        ? `${(currentStep / 6) * 100}%`
+                                        : "100%",
+                            }}
+                        />
+
+                    </div>
+
+                </div>
+
+                {/* Form Section */}
+                <div className="flex-1 px-4 sm:px-6 md:px-8 lg:px-10 py-6 overflow-y-auto h-screen">
+
+                    {currentStep === 1 && (
+                        <PersonalInfoStep
+                            resumeData={resumeData}
+                            setResumeData={setResumeData}
+                            setCurrentStep={setCurrentStep}
+                        />
+                    )}
+
+                    {currentStep === 2 && (
+                        <ExperienceStep
+                            resumeData={resumeData}
+                            setResumeData={setResumeData}
+                            setCurrentStep={setCurrentStep}
+                        />
+                    )}
+
+                    {currentStep === 3 && (
+                        <EducationStep
+                            resumeData={resumeData}
+                            setResumeData={setResumeData}
+                            setCurrentStep={setCurrentStep}
+                        />
+                    )}
+
+                    {currentStep === 4 && (
+                        <SkillsStep
+                            resumeData={resumeData}
+                            setResumeData={setResumeData}
+                            setCurrentStep={setCurrentStep}
+                        />
+                    )}
+
+                    {currentStep === 5 && (
+                        <SummaryStep
+                            resumeData={resumeData}
+                            setResumeData={setResumeData}
+                            setCurrentStep={setCurrentStep}
+                        />
+                    )}
+
+                    {currentStep === 6 && (
                         <FinalizeStep
                             resumeData={resumeData}
                             selectedSections={selectedSections}
@@ -273,11 +332,9 @@ export default function BuilderPage() {
                             handleNext={handleFinalizeNext}
                             resumeId={params?.id}
                         />
-                    )
-                }
+                    )}
 
-                {
-                    typeof currentStep === "string" && (
+                    {typeof currentStep === "string" && (
                         <OptionalSectionRenderer
                             currentStep={currentStep}
                             resumeData={resumeData}
@@ -286,16 +343,44 @@ export default function BuilderPage() {
                             selectedSections={selectedSections}
                             setSelectedSections={setSelectedSections}
                         />
-                    )
-                }
+                    )}
 
-            </div>
-            {/* LIVE PREVIEW */}
-            <div className="w-[45%] overflow-y-auto border-l bg-white p-10">
+                </div>
 
-                <SelectedTemplate
-                    data={resumeData}
-                />
+                {/* Desktop Preview */}
+                <div className="hidden lg:block w-[50%] border-l bg-white p-5 overflow-y-auto">
+                    <SelectedTemplate data={resumeData} />
+                </div>
+
+                {/* Mobile Preview Button */}
+                <button
+                    onClick={() => setShowPreview(true)}
+                    className="lg:hidden fixed bottom-5 right-5 bg-[#191970] text-white px-5 py-3 rounded-xl shadow-xl z-50"
+                >
+                    Preview Resume
+                </button>
+
+                {/* Mobile Preview Modal */}
+                {showPreview && (
+                    <div className="lg:hidden fixed inset-0 z-50 bg-black/60">
+
+                        <div className="w-full h-full bg-white overflow-y-auto">
+
+                            <button
+                                onClick={() => setShowPreview(false)}
+                                className="fixed top-4 right-4 bg-[#191970] text-white px-4 py-2 rounded-lg z-50"
+                            >
+                                Close
+                            </button>
+
+                            <div className="p-4 pt-20">
+                                <SelectedTemplate data={resumeData} />
+                            </div>
+
+                        </div>
+
+                    </div>
+                )}
 
             </div>
 

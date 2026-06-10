@@ -25,7 +25,7 @@ export default function SmartApplyPage() {
     const params = useParams();
 
     const resumeId = params.id;
-    
+
     const [resumeData, setResumeData] = useState(null);
     useEffect(() => {
 
@@ -60,33 +60,32 @@ export default function SmartApplyPage() {
     return (
 
         <>
-            <div className="w-full min-h-screen bg-linear-to-br from-[#191970] via-[#312E81] to-[#4338CA] overflow-hidden">
+            <div className="w-full min-h-screen bg-linear-to-br from-[#191970] via-[#312E81] to-[#4338CA] overflow-x-hidden">
 
-                <Nav></Nav>
+                <Nav />
 
-                <div className="w-full flex justify-center py-20 mt-[8%]">
+                <div className="w-full flex justify-center py-10 lg:py-20 mt-20 lg:mt-28">
 
-                    <div className="w-[90%] flex justify-between items-start gap-16">
-
+                    <div className="w-[95%] xl:w-[90%] flex flex-col xl:flex-row justify-between items-center xl:items-start gap-10 lg:gap-16">
                         {/* LEFT */}
 
-                        <div className="w-[45%] pt-12">
+                        <div className="w-full xl:w-[45%] pt-0 xl:pt-12 text-center xl:text-left">
 
                             <p className="text-[#A5B4FC] text-[18px] uppercase tracking-[4px] font-semibold mb-8">
                                 Smart Apply Technology
                             </p>
 
-                            <h1 className="text-[74px] leading-20.5 font-black text-white mb-10">
+                            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[74px] leading-tight xl:leading-20.5 font-black text-white mb-6 lg:mb-10">
                                 Your resume is ready to impress recruiters.
                             </h1>
 
-                            <p className="text-[24px] leading-10.5 text-white/70 mb-14">
+                            <p className="text-base sm:text-lg lg:text-xl xl:text-[24px] leading-7 lg:leading-10 text-white/70 mb-8 lg:mb-14">
                                 Our AI-optimized templates improve readability, ATS compatibility, and recruiter engagement so you can land more interviews faster.
                             </p>
 
                             <div className="flex flex-col gap-8 mb-16">
 
-                                <div className="bg-white/10 border border-white/10 backdrop-blur-xl rounded-[30px] p-7 flex items-start gap-5">
+                                <div className="bg-white/10 border border-white/10 backdrop-blur-xl rounded-2xl lg:rounded-[30px] p-4 sm:p-6 lg:p-7 flex items-start gap-4 lg:gap-5">
 
                                     <div className="min-w-15 h-15 rounded-2xl bg-linear-to-r from-cyan-400 to-blue-500 flex items-center justify-center shadow-xl">
                                         <CheckCircle2 className="text-white" size={30} />
@@ -94,11 +93,11 @@ export default function SmartApplyPage() {
 
                                     <div>
 
-                                        <h2 className="text-white text-[28px] font-bold mb-3">
+                                        <h2 className="text-white text-xl sm:text-2xl lg:text-[28px] font-bold mb-2 lg:mb-3">
                                             ATS Friendly
                                         </h2>
 
-                                        <p className="text-white/70 text-[20px] leading-8.5">
+                                        <p className="text-white/70 text-sm sm:text-base lg:text-[20px] leading-6 lg:leading-8">
                                             Optimized structure and formatting that passes applicant tracking systems easily.
                                         </p>
 
@@ -114,11 +113,11 @@ export default function SmartApplyPage() {
 
                                     <div>
 
-                                        <h2 className="text-white text-[28px] font-bold mb-3">
+                                        <h2 className="text-white text-xl sm:text-2xl lg:text-[28px] font-bold mb-2 lg:mb-3">
                                             Modern Design
                                         </h2>
 
-                                        <p className="text-white/70 text-[20px] leading-8.5">
+                                        <p className="text-white/70 text-sm sm:text-base lg:text-[20px] leading-6 lg:leading-8">
                                             Professionally crafted templates that instantly make your resume stand out.
                                         </p>
 
@@ -134,11 +133,11 @@ export default function SmartApplyPage() {
 
                                     <div>
 
-                                        <h2 className="text-white text-[28px] font-bold mb-3">
+                                        <h2 className="text-white text-xl sm:text-2xl lg:text-[28px] font-bold mb-2 lg:mb-3">
                                             Recruiter Approved
                                         </h2>
 
-                                        <p className="text-white/70 text-[20px] leading-8.5">
+                                        <p className="text-white/70 text-sm sm:text-base lg:text-[20px] leading-6 lg:leading-8">
                                             Clean layout and strategic formatting increase recruiter readability.
                                         </p>
 
@@ -148,14 +147,20 @@ export default function SmartApplyPage() {
 
                             </div>
 
-                            <div className="flex items-center gap-6">
+                            <div className="flex flex-col sm:flex-row items-center xl:items-start gap-4 lg:gap-6">
 
-                                <button onClick={() => router.push(
-                                    `/final-resume?id=${resumeId || ""}`)} className="px-12 py-5 rounded-[22px] bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-600 text-white text-[22px] font-bold shadow-2xl hover:scale-105 transition-all">
+                                <button
+                                    onClick={() =>
+                                        router.push(`/final-resume?id=${resumeId || ""}`)
+                                    }
+                                    className="w-full sm:w-auto px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-5 rounded-xl lg:rounded-[22px] bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-600 text-white text-base sm:text-lg lg:text-[22px] font-bold shadow-2xl hover:scale-105 hover:shadow-[0_15px_40px_rgba(59,130,246,0.5)] transition-all duration-300"
+                                >
                                     Continue →
                                 </button>
 
-                                <button className="px-12 py-5 rounded-[22px] border border-white/20 text-white text-[22px] font-semibold hover:bg-white hover:text-[#191970] transition-all">
+                                <button
+                                    className="w-full sm:w-auto px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-5 rounded-xl lg:rounded-[22px] border border-white/20 text-white text-base sm:text-lg lg:text-[22px] font-semibold hover:bg-white hover:text-[#191970] transition-all duration-300"
+                                >
                                     Change Template
                                 </button>
 
@@ -165,15 +170,15 @@ export default function SmartApplyPage() {
 
                         {/* RIGHT */}
 
-                        <div className="w-[55%] flex justify-center">
+                        <div className="w-full xl:w-[55%] flex justify-center mt-[5%]">
 
-                            <div className="w-[85%] bg-white/10 backdrop-blur-xl border border-white/10 rounded-[40px] p-8 shadow-[0_20px_80px_rgba(0,0,0,0.35)]">
+                            <div className="w-full lg:w-[90%] xl:w-[85%] bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl lg:rounded-[40px] p-4 sm:p-6 lg:p-8 shadow-[0_20px_80px_rgba(0,0,0,0.35)]">
 
                                 <div className="flex justify-between items-center mb-8">
 
                                     <div>
 
-                                        <h2 className="text-white text-[34px] font-bold">
+                                        <h2 className="text-white text-2xl lg:text-[34px] font-bold">
                                             Resume Preview
                                         </h2>
 
@@ -189,7 +194,7 @@ export default function SmartApplyPage() {
 
                                 </div>
 
-                                <div className="bg-white rounded-[30px] overflow-hidden shadow-2xl scale-[0.92] origin-top">
+                                <div className="bg-white rounded-2xl lg:rounded-[30px] overflow-auto shadow-2xl h-180">
 
                                     <SelectedTemplate data={resumeData} />
 

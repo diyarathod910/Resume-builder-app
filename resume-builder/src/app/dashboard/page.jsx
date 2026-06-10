@@ -90,47 +90,43 @@ export default function DashboardPage() {
     return (
         <section className="w-full min-h-screen bg-linear-to-br from-[#191970] via-[#312E81] to-[#4338CA] flex">
 
-            <DashboardSidebarUI></DashboardSidebarUI>
+            <DashboardSidebarUI />
 
             {/* MAIN CONTENT */}
-
-            <div className="w-[82%] px-16 py-14 overflow-y-auto">
+            <div className="flex-1 px-5 sm:px-8 md:px-10 lg:px-16 py-8 lg:py-14 overflow-y-auto">
 
                 {/* HEADER */}
+                <div className="mb-10 mt-15 lg:mb-14">
 
-                <div className="mb-14">
-
-                    <h1 className="text-white text-[56px] font-extrabold leading-tight mb-4">
+                    <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-extrabold leading-tight mb-4">
                         My Resumes
                     </h1>
 
-                    <p className="text-white/70 text-[22px] leading-9.5 ">
+                    <p className="text-white/70 text-base sm:text-lg lg:text-[22px] leading-7 lg:leading-9">
                         Create professional ATS-friendly resumes with beautiful modern templates and export them instantly.
                     </p>
 
                 </div>
 
-                {/* CARDS */}
-
-                <div className="flex flex-wrap gap-10">
+                {/* CARDS GRID */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-10">
 
                     {/* NEW RESUME CARD */}
-
                     <Link href="/templates">
 
-                        <div className="w-[320px] h-100 rounded-[34px] border-2 border-dashed border-cyan-300/60 bg-white/5 backdrop-blur-xl flex flex-col items-center justify-center cursor-pointer hover:scale-[1.03] hover:border-cyan-300 hover:bg-white/10 transition-all duration-300">
+                        <div className="w-full max-w-[320px] mx-auto h-100 rounded-[34px] border-2 border-dashed border-cyan-300/60 bg-white/5 backdrop-blur-xl flex flex-col items-center justify-center cursor-pointer hover:scale-[1.03] hover:border-cyan-300 hover:bg-white/10 transition-all duration-300">
 
-                            <div className="w-22.5 h-22.5 rounded-full bg-linear-to-r from-cyan-400 to-blue-500 flex items-center justify-center shadow-[0_10px_30px_rgba(34,211,238,0.45)] mb-8">
+                            <div className="w-20 h-20 lg:w-22 lg:h-22 rounded-full bg-linear-to-r from-cyan-400 to-blue-500 flex items-center justify-center shadow-[0_10px_30px_rgba(34,211,238,0.45)] mb-8">
 
-                                <Plus size={42} className="text-white" />
+                                <Plus size={40} className="text-white" />
 
                             </div>
 
-                            <h2 className="text-white text-[30px] font-bold mb-3">
+                            <h2 className="text-white text-2xl lg:text-[30px] font-bold mb-3">
                                 New Resume
                             </h2>
 
-                            <p className="text-white/60 text-[18px] text-center leading-8 px-10">
+                            <p className="text-white/60 text-base lg:text-[18px] text-center leading-7 px-8">
                                 Start building your professional resume in minutes.
                             </p>
 
@@ -138,29 +134,26 @@ export default function DashboardPage() {
 
                     </Link>
 
-                    {/* RESUME LIST */}
-
+                    {/* RESUMES */}
                     {resumes.map((resume) => {
 
-                        const templateData =
-                            templates.find(
-                                (t) => t.id === resume.template
-                            );
+                        const templateData = templates.find(
+                            (t) => t.id === resume.template
+                        );
 
                         return (
 
                             <div
                                 key={resume._id}
-                                className="w-[320px] cursor-pointer" onClick={() =>
+                                className="w-full max-w-[320px] mx-auto cursor-pointer"
+                                onClick={() =>
                                     router.push(`/builder/${resume._id}`)
                                 }
-
                             >
 
                                 <div className="relative group">
 
                                     {/* PREVIEW */}
-
                                     <div className="w-full h-100 bg-white rounded-[34px] overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.25)] border border-white/20 hover:-translate-y-2 transition-all duration-300">
 
                                         <img
@@ -171,27 +164,22 @@ export default function DashboardPage() {
 
                                     </div>
 
-                                    {/* ACTION */}
+                                    {/* MENU */}
                                     <div className="absolute top-5 right-5">
 
-                                        {/* MENU BUTTON */}
-
                                         <button
-
                                             onClick={(e) => {
 
                                                 e.stopPropagation();
 
                                                 setOpenMenuId(
-
                                                     openMenuId === resume._id
                                                         ? null
                                                         : resume._id
                                                 );
 
                                             }}
-
-                                            className="w-12.5 h-12.5 cursor-pointer rounded-2xl bg-white shadow-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+                                            className="w-12 h-12 rounded-2xl bg-white shadow-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
                                         >
 
                                             <EllipsisVertical
@@ -201,81 +189,56 @@ export default function DashboardPage() {
 
                                         </button>
 
+                                        {openMenuId === resume._id && (
 
+                                            <div className="absolute top-14 right-0 w-48 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden z-50">
 
+                                                <button
+                                                    onClick={(e) => {
 
+                                                        e.stopPropagation();
 
-                                        {/* DROPDOWN */}
+                                                        router.push(
+                                                            `/builder/${resume._id}`
+                                                        );
 
-                                        {
-                                            openMenuId === resume._id && (
+                                                    }}
+                                                    className="w-full h-14 px-5 text-left text-[17px] hover:bg-gray-100 transition-all"
+                                                >
+                                                    Update Resume
+                                                </button>
 
-                                                <div className="absolute top-16 right-0 w-48  bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden z-50">
+                                                <button
+                                                    onClick={(e) => {
 
-                                                    {/* UPDATE */}
+                                                        e.stopPropagation();
 
-                                                    <button
+                                                        handleDeleteResume(
+                                                            resume._id
+                                                        );
 
-                                                        onClick={(e) => {
+                                                    }}
+                                                    className="w-full h-14 px-5 text-left text-[17px] text-red-500 hover:bg-red-50 transition-all"
+                                                >
+                                                    Delete Resume
+                                                </button>
 
-                                                            e.stopPropagation();
+                                            </div>
 
-                                                            router.push(
-                                                                `/builder/${resume._id}`
-                                                            );
-
-                                                        }}
-
-                                                        className="w-full h-14 px-5 cursor-pointer text-left text-[17px] hover:bg-gray-100 transition-all"
-                                                    >
-
-                                                        Update Resume
-
-                                                    </button>
-
-
-
-
-
-                                                    {/* DELETE */}
-
-                                                    <button
-
-                                                        onClick={(e) => {
-
-                                                            e.stopPropagation();
-
-                                                            handleDeleteResume(
-                                                                resume._id
-                                                            );
-
-                                                        }}
-
-                                                        className="w-full h-14 px-5 text-left cursor-pointer text-[17px] text-red-500 hover:bg-red-50 transition-all"
-                                                    >
-
-                                                        Delete Resume
-
-                                                    </button>
-
-                                                </div>
-
-                                            )
-                                        }
+                                        )}
 
                                     </div>
 
                                 </div>
 
                                 {/* INFO */}
-
                                 <div className="mt-5 px-2">
 
-                                    <h2 className="text-white text-[28px] font-bold mb-2">
+                                    <h2 className="text-white text-xl lg:text-[28px] font-bold mb-2">
                                         {resume.title}
                                     </h2>
 
-                                    <p className="text-white/60 text-[18px]">
+                                    <p className="text-white/60 text-sm lg:text-[18px]">
                                         Resume Template
                                     </p>
 
@@ -290,15 +253,14 @@ export default function DashboardPage() {
                 </div>
 
             </div>
+
             {openLogin && (
                 <LoginModal setOpenLogin={setOpenLogin} />
             )}
+
             {openSignup && (
-                <SignupModal
-
-                />
+                <SignupModal />
             )}
-
 
         </section>
     );

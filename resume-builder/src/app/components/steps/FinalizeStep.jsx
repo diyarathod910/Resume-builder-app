@@ -54,33 +54,31 @@ export default function FinalizeStep({
     };
 
     return (
-        <div className="p-10">
+        <div className="w-full max-w-5xl px-4 sm:px-6 lg:p-10">
 
-            <h1 className="text-4xl leading-15.5 font-extrabold text-[#0F2147] mb-12 ">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F2147] mb-8 sm:mb-12 leading-tight">
                 Do you have anything else to add?
             </h1>
 
-            <div className="space-y-5">
+            <div className="space-y-4 sm:space-y-5">
 
                 {sections.map((section) => (
 
                     <label
                         key={section.id}
-                        className="flex items-center gap-4 text-[22px] font-medium text-[#1B1B1B]"
+                        className="flex items-start sm:items-center gap-3 sm:gap-4 text-base sm:text-lg lg:text-[22px] font-medium text-[#1B1B1B] cursor-pointer"
                     >
 
                         <input
                             type="checkbox"
-                            checked={selectedSections.includes(
-                                section.id
-                            )}
-                            onChange={() =>
-                                toggleSection(section.id)
-                            }
-                            className="w-7 h-7 rounded border border-gray-400"
+                            checked={selectedSections.includes(section.id)}
+                            onChange={() => toggleSection(section.id)}
+                            className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 mt-1 sm:mt-0 rounded border border-gray-400 shrink-0"
                         />
 
-                        {section.label}
+                        <span>
+                            {section.label}
+                        </span>
 
                     </label>
 
@@ -116,7 +114,8 @@ export default function FinalizeStep({
                     }
 
                 }}
-                className=" mt-14 bg-[#F7C548] hover:bg-[#efbb33] transition-all px-12 py-4 rounded-2xl text-[28px] font-bold text-black">
+                className="w-full sm:w-auto mt-10 sm:mt-14 bg-[#F7C548] hover:bg-[#efbb33] transition-all px-8 sm:px-12 py-3 sm:py-4 rounded-2xl text-lg sm:text-xl lg:text-[28px] font-bold text-black"
+            >
                 Next
             </button>
 

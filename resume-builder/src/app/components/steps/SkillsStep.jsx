@@ -49,39 +49,34 @@ export default function SkillsStep({
 
     return (
 
-        <div className="max-w-5xl">
+        <div className="w-full max-w-5xl px-4 sm:px-6 lg:px-0">
 
-            <h1 className="text-[52px] font-bold text-[#07203f] mb-5">
+            <h1 className="text-3xl sm:text-4xl lg:text-[52px] font-bold text-[#07203f] mb-5">
                 Add your skills
             </h1>
 
-            <div className="space-y-5 mt-10">
+            <div className="space-y-4 sm:space-y-5 mt-8 sm:mt-10">
 
                 {resumeData.skills.map((skill, index) => (
 
                     <div
                         key={index}
-                        className="flex items-center gap-4"
+                        className="flex items-center gap-3"
                     >
 
                         <input
                             type="text"
                             value={skill}
                             onChange={(e) =>
-                                handleSkillChange(
-                                    index,
-                                    e.target.value
-                                )
+                                handleSkillChange(index, e.target.value)
                             }
                             placeholder="React.js"
-                            className="w-full border rounded-xl px-5 py-4"
+                            className="flex-1 border rounded-xl px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base"
                         />
 
                         <button
-                            onClick={() =>
-                                deleteSkill(index)
-                            }
-                            className="w-12 h-12 rounded-xl bg-red-100 text-red-600 text-2xl font-bold hover:bg-red-200"
+                            onClick={() => deleteSkill(index)}
+                            className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-red-100 text-red-600 text-xl font-bold hover:bg-red-200 transition-all shrink-0"
                         >
                             ×
                         </button>
@@ -94,23 +89,23 @@ export default function SkillsStep({
 
             <button
                 onClick={addSkill}
-                className="mt-8 border-2 border-blue-700 text-blue-700 px-8 py-4 rounded-full"
+                className="mt-6 sm:mt-8 border-2 border-blue-700 text-blue-700 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base w-full sm:w-auto"
             >
                 + Add Skill
             </button>
 
-            <div className="flex justify-between mt-14">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 justify-between mt-10 sm:mt-14">
 
                 <button
                     onClick={() => setCurrentStep(3)}
-                    className="border px-10 py-4 rounded-full"
+                    className="border px-6 sm:px-10 py-3 sm:py-4 rounded-full w-full sm:w-auto"
                 >
                     Back
                 </button>
 
                 <button
                     onClick={() => setCurrentStep(5)}
-                    className="bg-[#f5c04f] px-10 py-4 rounded-full font-semibold"
+                    className="bg-[#f5c04f] px-6 sm:px-10 py-3 sm:py-4 rounded-full font-semibold w-full sm:w-auto"
                 >
                     Next: Summary
                 </button>

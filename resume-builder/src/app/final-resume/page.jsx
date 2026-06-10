@@ -139,167 +139,166 @@ export default function FinalResumePage() {
     return (
 
         <>
-            <Nav></Nav>
-            <section className="w-full min-h-screen  bg-linear-to-br from-[#191970] via-[#312E81] to-[#4338CA] px-[5%] py-20 flex justify-center overflow-hidden relative">
+
+            <section className="w-full min-h-screen bg-linear-to-br from-[#191970] via-[#312E81] to-[#4338CA] px-4 sm:px-6 lg:px-[5%] py-24 overflow-x-hidden relative">
+
+                <Nav />
+
+                {/* BLURS */}
+                <div className="absolute top-20 -left-40 w-96 h-96 rounded-full bg-cyan-400/20 blur-[150px]" />
+                <div className="absolute bottom-10 -right-40 w-96 h-96 rounded-full bg-indigo-500/20 blur-[150px]" />
+
+                <div className=" mx-auto mt-10 lg:mt-28 relative z-10">
+
+                    <div className="grid grid-cols-1 xl:grid-cols-[0.95fr_1.25fr] gap-12 xl:gap-16 items-start">
+
+                        {/* LEFT SIDE */}
+                        <div className="w-full">
+
+                            {/* KEEP YOUR CURRENT LEFT CONTENT */}
+
+                            <p className="text-[#A5B4FC] text-sm sm:text-base uppercase tracking-[4px] font-semibold mb-6">
+                                Final Resume Preview
+                            </p>
+
+                            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl 2xl:text-[82px] leading-tight font-black text-white mb-8">
+                                Your professional resume is ready.
+                            </h1>
+
+                            <p className="text-base sm:text-lg lg:text-xl xl:text-[24px] leading-8 lg:leading-10 text-white/75 mb-12">
+                                Download your ATS-friendly resume instantly or continue editing anytime.
+                                Professionally designed templates crafted to impress recruiters.
+                            </p>
 
 
+                            {/* FEATURE CARDS */}
+                            <div className="flex flex-col gap-5 mb-12">
 
-                {/* LEFT BLUR */}
+                                {/* ATS */}
+                                <div className="bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-5 lg:p-7 flex items-start gap-5 hover:bg-white/15 transition-all">
 
-                <div className="absolute top-[8%] -left-35 w-105 h-105 rounded-full bg-cyan-400/20 blur-[150px]"></div>
+                                    <div className="min-w-14 h-14 rounded-2xl bg-linear-to-r from-cyan-400 to-blue-500 flex items-center justify-center shadow-xl">
+                                        <CheckCircle2 className="text-white" size={28} />
+                                    </div>
 
-                {/* RIGHT BLUR */}
+                                    <div>
 
-                <div className="absolute bottom-[5%] -right-30 w-105 h-105 rounded-full bg-indigo-500/20 blur-[150px]"></div>
+                                        <h2 className="text-white text-xl lg:text-2xl xl:text-[30px] font-bold mb-2">
+                                            ATS Optimized
+                                        </h2>
 
-                {/* MAIN CONTAINER */}
+                                        <p className="text-white/70 text-sm sm:text-base lg:text-lg">
+                                            Smart formatting and structure improve recruiter readability and ATS performance.
+                                        </p>
 
-                <div className="w-full  flex justify-between items-start gap-[4%] relative z-10 mt-[8%]">
-
-                    {/* LEFT SECTION */}
-
-                    <div className="w-[44%] pt-15">
-
-                        <p className="text-[#A5B4FC] text-[18px] uppercase tracking-[5px] font-semibold mb-7.5">
-                            Final Resume Preview
-                        </p>
-
-                        <h1 className="text-[82px] leading-23 font-black text-white tracking-[-3px] mb-10.5">
-                            Your professional resume is ready.
-                        </h1>
-
-                        <p className="text-[24px] leading-10.5 text-white/75  mb-15">
-                            Download your ATS-friendly resume instantly or continue editing
-                            anytime. Professionally designed templates crafted to impress recruiters.
-                        </p>
-
-                        {/* FEATURE CARDS */}
-
-                        <div className="w-full flex flex-col gap-6.5 mb-17.5">
-
-                            <div className="w-full bg-white/10 backdrop-blur-xl border border-white/10 rounded-[30px] p-7.5 flex items-start gap-6 hover:bg-white/15 transition-all duration-300">
-
-                                <div className="min-w-16.5 h-16.5] rounded-[22px] bg-linear-to-r from-cyan-400 to-blue-500 flex items-center justify-center shadow-[0_10px_30px_rgba(59,130,246,0.45)]">
-
-                                    <CheckCircle2 className="text-white" size={32} />
+                                    </div>
 
                                 </div>
 
-                                <div>
+                                {/* PREMIUM */}
+                                <div className="bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-5 lg:p-7 flex items-start gap-5 hover:bg-white/15 transition-all">
 
-                                    <h2 className="text-white text-[30px] font-bold mb-2.5">
-                                        ATS Optimized
-                                    </h2>
+                                    <div className="min-w-14 h-14 rounded-2xl bg-linear-to-r from-purple-400 to-pink-500 flex items-center justify-center shadow-xl">
+                                        <Sparkles className="text-white" size={28} />
+                                    </div>
 
-                                    <p className="text-white/70 text-[20px] leading-8.5">
-                                        Smart formatting and structure improve recruiter readability and ATS performance.
-                                    </p>
+                                    <div>
+
+                                        <h2 className="text-white text-xl lg:text-2xl xl:text-[30px] font-bold mb-2">
+                                            Premium Resume Design
+                                        </h2>
+
+                                        <p className="text-white/70 text-sm sm:text-base lg:text-lg">
+                                            Elegant layouts designed to make your profile stand out instantly.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                                {/* PDF */}
+                                <div className="bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-5 lg:p-7 flex items-start gap-5 hover:bg-white/15 transition-all">
+
+                                    <div className="min-w-14 h-14 rounded-2xl bg-linear-to-r from-emerald-400 to-green-500 flex items-center justify-center shadow-xl">
+                                        <ShieldCheck className="text-white" size={28} />
+                                    </div>
+
+                                    <div>
+
+                                        <h2 className="text-white text-xl lg:text-2xl xl:text-[30px] font-bold mb-2">
+                                            Instant PDF Export
+                                        </h2>
+
+                                        <p className="text-white/70 text-sm sm:text-base lg:text-lg">
+                                            Download high-quality resumes with perfect spacing and formatting.
+                                        </p>
+
+                                    </div>
 
                                 </div>
 
                             </div>
 
-                            <div className="w-full bg-white/10 backdrop-blur-xl border border-white/10 rounded-[30px] p-7.5 flex items-start gap-6 hover:bg-white/15 transition-all duration-300">
+                            {/* YOUR BUTTONS HERE */}
+                            {/* BUTTONS */}
+                            <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 mt-12">
 
-                                <div className="min-w-16.5 h-16.5] rounded-[22px] bg-linear-to-r from-purple-400 to-pink-500 flex items-center justify-center shadow-[0_10px_30px_rgba(192,132,252,0.45)]">
+                                <button
+                                    onClick={handleDownload}
+                                    className="w-full sm:w-auto px-8 lg:px-12 py-4 lg:py-6 rounded-3xl bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-600 text-white text-lg lg:text-[22px] font-bold shadow-[0_15px_40px_rgba(59,130,246,0.45)] hover:scale-[1.03] transition-all duration-300 cursor-pointer"
+                                >
+                                    Download Resume
+                                </button>
 
-                                    <Sparkles className="text-white" size={32} />
-
-                                </div>
-
-                                <div>
-
-                                    <h2 className="text-white text-[30px] font-bold mb-2.5">
-                                        Premium Resume Design
-                                    </h2>
-
-                                    <p className="text-white/70 text-[20px] leading-8.5">
-                                        Elegant layouts designed to make your profile stand out instantly.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                            <div className="w-full bg-white/10 backdrop-blur-xl border border-white/10 rounded-[30px] p-7.5 flex items-start gap-6 hover:bg-white/15 transition-all duration-300">
-
-                                <div className="min-w-16.5 h-16.5] rounded-[22px] bg-linear-to-r from-emerald-400 to-green-500 flex items-center justify-center shadow-[0_10px_30px_rgba(74,222,128,0.45)]">
-
-                                    <ShieldCheck className="text-white" size={32} />
-
-                                </div>
-
-                                <div>
-
-                                    <h2 className="text-white text-[30px] font-bold mb-2.5">
-                                        Instant PDF Export
-                                    </h2>
-
-                                    <p className="text-white/70 text-[20px] leading-8.5">
-                                        Download high-quality resumes with perfect spacing and formatting.
-                                    </p>
-
-                                </div>
+                                <button
+                                    onClick={() => router.push("/builder")}
+                                    className="w-full sm:w-auto px-8 lg:px-12 py-4 lg:py-6 rounded-3xl border border-white/20 bg-white/5 backdrop-blur-xl text-white text-lg lg:text-[22px] font-semibold hover:bg-white hover:text-[#191970] transition-all duration-300 cursor-pointer"
+                                >
+                                    Edit Resume
+                                </button>
 
                             </div>
 
                         </div>
 
-                        {/* BUTTONS */}
+                        {/* RIGHT SIDE */}
+                        <div className="w-full xl:sticky xl:top-8">
 
-                        <div className="flex items-center gap-6 flex-wrap">
+                            <div className="bg-white/10 backdrop-blur-2xl border border-white/10 rounded-4xl lg:rounded-[42px] p-4 sm:p-6 lg:p-8 shadow-[0_20px_120px_rgba(0,0,0,0.35)]">
 
-                            <button
-                                onClick={handleDownload}
-                                className="px-12 py-6 rounded-3xl bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-600 text-white text-[22px] font-bold shadow-[0_15px_40px_rgba(59,130,246,0.45)] hover:scale-[1.03] transition-all duration-300"
-                            >
-                                Download Resume
-                            </button>
+                                {/* TOP BAR */}
 
-                            <button
-                                onClick={() => router.push("/builder")}
-                                className="px-12 py-6 rounded-3xl border border-white/20 bg-white/5 backdrop-blur-xl text-white text-[22px] font-semibold hover:bg-white hover:text-[#191970] transition-all duration-300"
-                            >
-                                Edit Resume
-                            </button>
+                                <div className="flex flex-col sm:flex-row justify-between gap-4 sm:items-center mb-6">
 
-                        </div>
+                                    <div>
 
-                    </div>
+                                        <h2 className="text-white text-2xl lg:text-3xl font-bold">
+                                            Resume Preview
+                                        </h2>
 
-                    {/* RIGHT SECTION */}
+                                        <p className="text-white/60 text-sm lg:text-base mt-1">
+                                            Live professional resume template
+                                        </p>
 
-                    <div className="w-[52%] flex justify-center sticky top-30">
+                                    </div>
 
-                        <div className="w-full bg-white/10 backdrop-blur-2xl border border-white/10 rounded-[42px] p-8.5 shadow-[0_20px_120px_rgba(0,0,0,0.35)]">
-
-                            {/* TOP BAR */}
-
-                            <div className="w-full flex justify-between items-center mb-8.5">
-
-                                <div>
-
-                                    <h2 className="text-white text-[38px] font-bold mb-2">
-                                        Resume Preview
-                                    </h2>
-
-                                    <p className="text-white/60 text-[18px]">
-                                        Live professional resume template
-                                    </p>
+                                    <div className="px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-sm font-semibold w-fit">
+                                        ATS Friendly
+                                    </div>
 
                                 </div>
 
-                                <div className="px-4.5 py-2.5 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-[15px] font-semibold">
-                                    ATS Friendly
+                                {/* RESUME */}
+
+                                <div className="bg-white rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(15,23,42,0.18)]">
+
+                                    <div className="w-full max-h-[85vh] overflow-auto">
+
+                                        <SelectedTemplate data={resumeData} />
+
+                                    </div>
+
                                 </div>
-
-                            </div>
-
-                            {/* RESUME */}
-
-                            <div className="w-full bg-white rounded-4xl overflow-hidden shadow-[0_20px_60px_rgba(15,23,42,0.18)] scale-[0.90] origin-top">
-
-                                <SelectedTemplate data={resumeData} />
 
                             </div>
 

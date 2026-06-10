@@ -69,49 +69,58 @@ export default function LoginModal() {
 
     return (
 
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-999">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center px-4 py-6 z-[999]">
 
-            <div className="w-105 bg-white rounded-4xl p-12 relative shadow-2xl">
+            <div className="relative w-full max-w-md lg:max-w-[420px] bg-white rounded-3xl lg:rounded-4xl p-6 sm:p-8 lg:p-12 shadow-2xl">
 
-                {/* Close */}
+                {/* CLOSE BUTTON */}
                 <button
                     onClick={closeModal}
-                    className="absolute top-5 right-6 text-[34px] text-gray-400 hover:text-black transition-all cursor-pointer"
+                    aria-label="Close login modal"
+                    className="absolute top-4 right-5 text-3xl text-gray-400 hover:text-black transition-all cursor-pointer"
                 >
                     ×
                 </button>
 
-                <h1 className="text-[36px] font-bold text-center text-[#191970]">
+                {/* TITLE */}
+                <h1 className="text-2xl sm:text-3xl lg:text-[36px] font-bold text-center text-[#191970]">
                     Login
                 </h1>
 
-                <div className="flex flex-col gap-5 mt-12">
+                {/* BUTTONS */}
+                <div className="flex flex-col gap-4 sm:gap-5 mt-8 sm:mt-10 lg:mt-12">
 
-                    {/* Google */}
-                    <button onClick={handleGoogleLogin} className="h-17.5 cursor-pointer border border-gray-300 rounded-2xl flex items-center justify-center gap-4 text-[20px] font-medium hover:bg-gray-50 transition-all">
-
-                        <FcGoogle className="text-[32px]" />
+                    {/* GOOGLE LOGIN */}
+                    <button
+                        onClick={handleGoogleLogin}
+                        className="h-14 sm:h-16 lg:h-[70px] border border-gray-300 rounded-2xl flex items-center justify-center gap-3 sm:gap-4 text-base sm:text-lg lg:text-[20px] font-medium hover:bg-gray-50 transition-all cursor-pointer"
+                    >
+                        <FcGoogle className="text-[28px] sm:text-[30px] lg:text-[32px]" />
 
                         Continue with Google
-
                     </button>
 
-                    {/* Email */}
-                    <button onClick={() => router.push("/loginEmail")} className="h-17.5 border border-gray-300 rounded-2xl flex items-center justify-center gap-4 text-[20px] font-medium hover:bg-gray-50 transition-all">
-
-                        <MdOutlineMail className="text-[30px] text-[#191970]" />
+                    {/* EMAIL LOGIN */}
+                    <button
+                        onClick={() => router.push("/loginEmail")}
+                        className="h-14 sm:h-16 lg:h-[70px] border border-gray-300 rounded-2xl flex items-center justify-center gap-3 sm:gap-4 text-base sm:text-lg lg:text-[20px] font-medium hover:bg-gray-50 transition-all cursor-pointer"
+                    >
+                        <MdOutlineMail className="text-[26px] sm:text-[28px] lg:text-[30px] text-[#191970]" />
 
                         Login with Email
-
                     </button>
 
                 </div>
 
-                <p className="text-center text-[18px] text-gray-500 mt-10">
+                {/* FOOTER */}
+                <p className="text-center text-sm sm:text-base lg:text-[18px] text-gray-500 mt-8 sm:mt-10">
 
-                    Don’t have an account?
+                    Don't have an account?
 
-                    <span onClick={() => router.push("/signup")} className="text-[#191970] font-semibold ml-2 cursor-pointer">
+                    <span
+                        onClick={() => router.push("/signup")}
+                        className="text-[#191970] font-semibold ml-2 cursor-pointer hover:underline"
+                    >
                         Sign up
                     </span>
 

@@ -1,27 +1,29 @@
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 export default function Footer() {
+    const router = useRouter();
     return (
         <>
-            <footer className="w-full bg-[#180028] px-[8%] py-22.5">
+            <footer className="w-full bg-[#180028] px-4 sm:px-6 md:px-10 lg:px-[8%] py-12 md:py-16 lg:py-22">
 
-                <div className="w-full flex justify-between gap-[8%] flex-wrap">
+                <div className="w-full flex flex-col lg:flex-row justify-between gap-12 lg:gap-[8%]">
 
                     {/* LEFT SIDE */}
-                    <div className="w-[40%] flex flex-col gap-10">
+                    <div className="w-full lg:w-[40%] flex flex-col gap-6 md:gap-8">
 
                         {/* LOGO */}
 
                         <Link href="/" className="flex items-center gap-3.5 ">
 
-                            <div className="w-14.5 h-14 rounded-2xl bg-[#191970] flex items-center justify-center">
+                            <div className="w-11 h-11 md:w-14 md:h-14 rounded-2xl bg-[#191970] flex items-center justify-center">
 
-                                <span className="text-white text-[26px] font-bold">
+                                <span className="text-white text-xl md:text-[26px] font-bold">
                                     Z
                                 </span>
 
                             </div>
 
-                            <h1 className="text-[28px] font-bold text-[#F5F5F5]">
+                            <h1 className="text-xl md:text-[28px] font-bold text-[#F5F5F5]">
                                 Zety
                             </h1>
 
@@ -29,7 +31,7 @@ export default function Footer() {
 
 
                         {/* DESCRIPTION */}
-                        <p className="text-[#F5F5F5] text-[18px] leading-10 font-medium">
+                        <p className="text-[#F5F5F5] text-sm md:text-base lg:text-[18px] leading-7 md:leading-8 lg:leading-10 font-medium">
 
                             We are indie developers based in Austria – Mozart,
                             not kangaroos. Our mission: Empower job seekers worldwide.
@@ -39,68 +41,68 @@ export default function Footer() {
                         </p>
 
                         {/* SOCIALS */}
-                        <div className="flex items-center gap-6.5 flex-wrap">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-4 flex-wrap">
 
-                            <h2 className="text-white text-[22px] font-semibold">
+                            <h2 className="text-white text-lg md:text-xl lg:text-[22px] font-semibold">
                                 Tell your friends about us
                             </h2>
 
                             <div className="flex items-center gap-6">
 
-                                <i className="fa-solid fa-envelope text-white text-[28px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer"></i>
+                                <i className="fa-solid fa-envelope text-white text-xl md:text-2xl lg:text-[28px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer"></i>
 
-                                <i className="fa-brands fa-linkedin text-white text-[28px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer"></i>
+                                <i className="fa-brands fa-linkedin text-white text-xl md:text-2xl lg:text-[28px]] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer"></i>
 
-                                <i className="fa-brands fa-telegram text-white text-[28px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer"></i>
+                                <i className="fa-brands fa-telegram text-white text-xl md:text-2xl lg:text-[28px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer"></i>
 
-                                <i className="fa-brands fa-facebook text-white text-[28px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer"></i>
+                                <i className="fa-brands fa-facebook text-white text-xl md:text-2xl lg:text-[28px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer"></i>
 
-                                <i className="fa-brands fa-whatsapp text-white text-[28px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer"></i>
+                                <i className="fa-brands fa-whatsapp text-white text-xl md:text-2xl lg:text-[28px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer"></i>
 
-                                <i className="fa-brands fa-x-twitter text-white text-[28px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer"></i>
+                                <i className="fa-brands fa-x-twitter text-white text-xl md:text-2xl lg:text-[28px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer"></i>
 
-                                <i className="fa-brands fa-reddit text-white text-[28px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer"></i>
+                                <i className="fa-brands fa-reddit text-white text-xl md:text-2xl lg:text-[28px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer"></i>
 
                             </div>
 
                         </div>
 
                         {/* COPYRIGHT */}
-                        <p className="text-[#E2E8F0] text-[18px] mt-2.5">
+                        <p className="text-[#E2E8F0] text-sm md:text-base lg:text-[18px] mt-2.5">
                             © 2026 Your Resume Builder
                         </p>
 
                     </div>
 
                     {/* RIGHT SIDE */}
-                    <div className="w-[45%] flex justify-between gap-20">
+                   <div className="w-full lg:w-[45%] flex flex-col sm:flex-row justify-between gap-10 md:gap-16 lg:gap-20">
 
                         {/* PRODUCT */}
-                        <div className="flex flex-col gap-7">
+                        <div className="flex flex-col gap-5 md:gap-7">
 
-                            <h1 className="text-white text-[28px] font-bold">
+                            <h1 className="text-white text-xl md:text-2xl lg:text-[28px] font-bold">
                                 PRODUCT
                             </h1>
 
                             <div className="flex flex-col gap-5.5">
 
-                                <p className="text-[#F1F5F9] text-[22px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
+                                <p className="text-[#F1F5F9] text-base md:text-lg lg:text-[22px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
                                     Resume Templates
                                 </p>
 
-                                <p className="text-[#F1F5F9] text-[22px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
+                                <p className="text-[#F1F5F9] text-base md:text-lg lg:text-[22px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
                                     Resume Builder
                                 </p>
 
-                                <p className="text-[#F1F5F9] text-[22px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
+                                <p className="text-[#F1F5F9] text-base md:text-lg lg:text-[22px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
                                     PDF Download
                                 </p>
 
-                                <p className="text-[#F1F5F9] text-[22px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
+                                <p className="text-[#F1F5F9] text-base md:text-lg lg:text-[22px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
                                     ATS Friendly Resume
                                 </p>
 
-                                <p className="text-[#F1F5F9] text-[22px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
+                                <p className="text-[#F1F5F9] text-base md:text-lg lg:text-[22px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
                                     Live Preview
                                 </p>
 
@@ -111,29 +113,29 @@ export default function Footer() {
                         {/* COMPANY */}
                         <div className="flex flex-col gap-7">
 
-                            <h1 className="text-white text-[28px] font-bold">
+                            <h1 className="text-white text-xl md:text-2xl lg:text-[28px] font-bold">
                                 COMPANY
                             </h1>
 
-                            <div className="flex flex-col gap-5.5">
+                            <div className="flex flex-col gap-3 md:gap-5">
 
-                                <p className="text-[#F1F5F9] text-[22px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
+                                <p onClick={() => router.push("/about")} className="text-[#F1F5F9] text-base md:text-lg lg:text-[22px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
                                     About
                                 </p>
 
-                                <p className="text-[#F1F5F9] text-[22px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
+                                <p onClick={() => router.push("/pricing")} className="text-[#F1F5F9] text-base md:text-lg lg:text-[22px]] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
                                     Pricing
                                 </p>
 
-                                <p className="text-[#F1F5F9] text-[22px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
+                                <p className="text-[#F1F5F9] text-base md:text-lg lg:text-[22px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
                                     Contact
                                 </p>
 
-                                <p className="text-[#F1F5F9] text-[22px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
+                                <p className="text-[#F1F5F9] text-base md:text-lg lg:text-[22px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
                                     Terms of Service
                                 </p>
 
-                                <p className="text-[#F1F5F9] text-[22px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
+                                <p className="text-[#F1F5F9] text-base md:text-lg lg:text-[22px] hover:text-[#60A5FA] transition-all duration-300 cursor-pointer">
                                     Privacy Policy
                                 </p>
 

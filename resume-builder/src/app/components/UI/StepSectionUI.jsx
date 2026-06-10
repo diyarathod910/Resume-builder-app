@@ -47,21 +47,21 @@ export default function StepsSection() {
 
     return (
 
-        <section className="w-full bg-[#F8FAFC] flex justify-center py-30 px-[5%]">
+        <section className="w-full bg-[#F8FAFC] flex justify-center py-16 md:py-24 lg:py-30 px-4 sm:px-6 md:px-10 lg:px-[5%]">
 
             {/* MAIN CONTAINER */}
-            <div className="w-full  flex flex-col gap-30">
+            <div className="w-full flex flex-col gap-16 md:gap-24 lg:gap-30">
 
                 {/* HEADING */}
-                <div className="flex flex-col gap-5.5">
+                <div className="flex flex-col gap-4 md:gap-5">
 
-                    <h2 className="text-[74px] leading-21 font-black text-[#0F172A]">
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[74px] leading-tight lg:leading-21 font-black text-[#0F172A]">
 
                         Create a professional resume in minutes
 
                     </h2>
 
-                    <p className="text-[28px] leading-10.5 text-[#64748B] ">
+                    <p className="text-lg sm:text-xl md:text-2xl lg:text-[28px] leading-8 md:leading-9 lg:leading-10.5 text-[#64748B] max-w-5xl">
 
                         Build ATS-friendly resumes easily with beautiful templates and live preview.
 
@@ -70,35 +70,27 @@ export default function StepsSection() {
                 </div>
 
                 {/* STEPS */}
-                <div className="flex flex-col gap-30">
+                <div className="flex flex-col gap-16 md:gap-24 lg:gap-30">
 
                     {steps.map((step, index) => (
 
                         <div
                             key={index}
-                            className={`w-full flex items-center justify-between gap-[7%] ${index % 2 !== 0 ? "flex-row-reverse" : ""
-                                }`}
+                            className="w-full flex flex-col gap-8 lg:gap-10"
                         >
 
-                            {/* IMAGE SIDE */}
-                            <div className="w-[48%]">
+                            {/* IMAGE */}
+                            <div className="w-full">
 
-                                <div className="w-full bg-white rounded-[38px] p-7.5 shadow-xl border border-[#E2E8F0]">
+                                <div className="w-full bg-white rounded-[24px] md:rounded-[32px] lg:rounded-[38px] p-4 md:p-6 lg:p-8 shadow-xl border border-[#E2E8F0]">
 
-                                    {/* TOP TABS */}
-                                    {/* <div className="flex items-center gap-4.5 mb-7.5">
-
-                                       
-                                    </div> */}
-
-                                    {/* IMAGE */}
-                                    <div className="w-full rounded-3xl overflow-hidden">
+                                    <div className="w-full rounded-2xl lg:rounded-3xl overflow-hidden">
 
                                         <Image
                                             src={step.image}
                                             alt={step.title}
-                                            width={800}
-                                            height={600}
+                                            width={1200}
+                                            height={800}
                                             className="w-full object-cover"
                                         />
 
@@ -108,25 +100,25 @@ export default function StepsSection() {
 
                             </div>
 
-                            {/* CONTENT SIDE */}
-                            <div className="w-[45%] flex flex-col gap-6.5">
+                            {/* CONTENT */}
+                            <div className="w-full flex flex-col gap-5">
 
                                 {/* ICON */}
-                                <div className="w-22.5 h-22.5 rounded-[28px] bg-linear-to-br from-[#38BDF8] via-[#3B82F6] to-[#6366F1] flex items-center justify-center text-white shadow-xl">
+                                <div className="w-16 h-16 md:w-20 md:h-20 rounded-[22px] bg-gradient-to-br from-[#38BDF8] via-[#3B82F6] to-[#6366F1] flex items-center justify-center text-white shadow-xl">
 
                                     {step.icon}
 
                                 </div>
 
                                 {/* TITLE */}
-                                <h3 className="text-[64px] leading-18 font-bold text-[#191970]">
+                                <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-bold text-[#191970] leading-tight">
 
                                     {step.number}. {step.title}
 
                                 </h3>
 
                                 {/* DESCRIPTION */}
-                                <p className="text-[28px] leading-11.5 text-[#64748B]">
+                                <p className="text-lg sm:text-xl md:text-2xl lg:text-[28px] text-[#64748B] leading-8 md:leading-10">
 
                                     {step.description}
 
