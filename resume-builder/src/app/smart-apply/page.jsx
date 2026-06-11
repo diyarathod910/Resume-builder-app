@@ -26,6 +26,9 @@ export default function SmartApplyPage() {
 
     const resumeId = params.id;
 
+    console.log(resumeId);
+    
+
     const [resumeData, setResumeData] = useState(null);
     useEffect(() => {
 
