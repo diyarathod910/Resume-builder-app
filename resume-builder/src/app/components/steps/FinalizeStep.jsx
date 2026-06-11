@@ -108,9 +108,7 @@ export default function FinalizeStep({
                             JSON.stringify(resumeData)
                         );
 
-                        router.push(
-                            `/smart-apply?id=${resumeId || ""}`
-                        );
+                        router.push(`/smart-apply/${resumeId}`);
                     }
 
                 }}
