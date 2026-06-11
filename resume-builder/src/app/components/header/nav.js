@@ -84,18 +84,12 @@ export default function Nav() {
                             Resume Builder
                         </Link>
 
-                        <button
-                            onClick={() => {
-                                document
-                                    .getElementById("templates")
-                                    ?.scrollIntoView({
-                                        behavior: "smooth",
-                                    });
-                            }}
+                        <Link
+                            href="/templates"
                             className="text-base xl:text-[20px] font-medium text-gray-500 hover:text-[#191970] transition-all cursor-pointer "
                         >
                             Resume Templates
-                        </button>
+                        </Link>
 
                         <Link
                             href="/pricing"

@@ -76,49 +76,43 @@ export default function StepsSection() {
 
                         <div
                             key={index}
-                            className="w-full flex flex-col gap-8 lg:gap-10"
+                            className={`w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-20 ${index % 2 !== 0 ? "lg:flex-row-reverse" : ""
+                                }`}
                         >
 
                             {/* IMAGE */}
-                            <div className="w-full">
+                            <div className="w-full lg:w-1/2">
 
-                                <div className="w-full bg-white rounded-[24px] md:rounded-[32px] lg:rounded-[38px] p-4 md:p-6 lg:p-8 shadow-xl border border-[#E2E8F0]">
+                                <div className="bg-white rounded-[38px] p-6 shadow-xl border border-[#E2E8F0]">
 
-                                    <div className="w-full rounded-2xl lg:rounded-3xl overflow-hidden">
-
-                                        <Image
-                                            src={step.image}
-                                            alt={step.title}
-                                            width={1200}
-                                            height={800}
-                                            className="w-full object-cover"
-                                        />
-
-                                    </div>
+                                    <Image
+                                        src={step.image}
+                                        alt={step.title}
+                                        width={1200}
+                                        height={800}
+                                        className="w-full rounded-3xl"
+                                    />
 
                                 </div>
 
                             </div>
 
                             {/* CONTENT */}
-                            <div className="w-full flex flex-col gap-5">
+                            <div className="w-full lg:w-1/2 flex flex-col gap-6">
 
-                                {/* ICON */}
-                                <div className="w-16 h-16 md:w-20 md:h-20 rounded-[22px] bg-gradient-to-br from-[#38BDF8] via-[#3B82F6] to-[#6366F1] flex items-center justify-center text-white shadow-xl">
+                                <div className="w-20 h-20 rounded-[24px] bg-gradient-to-br from-[#38BDF8] via-[#3B82F6] to-[#6366F1] flex items-center justify-center text-white shadow-xl">
 
                                     {step.icon}
 
                                 </div>
 
-                                {/* TITLE */}
-                                <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-bold text-[#191970] leading-tight">
+                                <h3 className="text-4xl lg:text-[72px] leading-none font-black text-[#191970]">
 
                                     {step.number}. {step.title}
 
                                 </h3>
 
-                                {/* DESCRIPTION */}
-                                <p className="text-lg sm:text-xl md:text-2xl lg:text-[28px] text-[#64748B] leading-8 md:leading-10">
+                                <p className="text-xl lg:text-[30px] leading-relaxed text-[#64748B]">
 
                                     {step.description}
 
